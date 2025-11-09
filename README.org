@@ -189,7 +189,7 @@ exclude_org_node = [
 ]
 arva_data_locations = arva_data_locations.loc[~arva_data_locations.org_node_id.isin(exclude_org_node),:]
 
-fname = "data/general/MLRA_52_2022/MLRA_52.shp"
+fname = "data/MLRA_52_2022/MLRA_52.shp"
 zones = gpd.read_file(fname)
 
 arva_data_locations = arva_data_locations.sjoin(zones, how="left",predicate="within").drop(columns="index_right")
