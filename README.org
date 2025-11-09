@@ -3,8 +3,10 @@
 
 This is an org file that contains the code blocks used for the soil sample campaign.
 
-TODO make sure we store all data used and created in the data sub-folder
-TODO move all functions to the function section
+The scripts saves information to a data folder, this is then compressed and uploaded to the data science gcp storage bucket:
+- arva_ds_slurm/Projects/soil_sample_campaign_2025/data.tar.gz
+
+If you wish to run the script, download the tar.gz file and uncompress it in the current working directory.
 
 * Libraries
 
@@ -139,7 +141,7 @@ def dbeaver_json_to_geojson(fname : str) -> str:
 
 *** generate cluster information
 
-Please note you can skip to the [[*load cluster information]] section if you do not want to regenerate the cluster information.
+Please note you can skip to the [[load cluster information]] section if you do not want to regenerate the cluster information.
 
 To get the centroids for the arva field, we use the following SQL query on the database. We save the results to the data subdirectory.
 
@@ -382,7 +384,7 @@ clustered_data_with_metadata.write_csv("data/clustered_arva_soilgpt_samples_targ
 Reload the file from disk. This allows for a point to continue further analysis from, without requiring us to rerun the clustering, classification, and appropriate joins.
 
 #+begin_src python :session soilgpt-sample :results value :pandoc t
-clustered_data_with_metadata  = pl.read_csv("data/clustered_arva_soilgpt_samples_targeted_contracts_with_viable_locations_and_metadata_2025_09_19.csv")
+clustered_data_with_metadata  = pl.read_csv("   data/clustered_arva_soilgpt_samples_targeted_contracts_with_viable_locations_and_metadata_2025_09_19.csv")
 #+end_src
 
 #+begin_src python :session soilgpt-sample :results value :pandoc t
